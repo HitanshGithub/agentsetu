@@ -1,0 +1,21 @@
+{
+  "name": "agentsetu",
+  "version": "1.1.0",
+  "description": "AgentSetu — make any Indian merchant sellable to AI buyers in 5 minutes. Razorpay Buildathon Track 01: AI Growth & Agentic Commerce.",
+  "type": "module",
+  "scripts": {
+    "mandate": "node src/mandate/server.js",
+    "storefront": "node src/storefront/server.js",
+    "panel": "node src/panel/server.js",
+    "generate": "node src/storefront/generate.js",
+    "agent": "node src/agent/run.js",
+    "demo:scripted": "node src/agent/scripted.js",
+    "dev": "node scripts/dev-all.js",
+    "test": "node test/attacks.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "openai": "^4.77.0"
+  }
+}

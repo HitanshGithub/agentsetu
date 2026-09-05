@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentSetu — Control Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg"></canvas>
+
+<header>
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.5 L20 5.5 V11.5 C20 16.5 16.7 20.2 12 21.5 C7.3 20.2 4 16.5 4 11.5 V5.5 Z"/>
+        <path d="M9 7.5 h6 M9 10.5 h6 M9 7.5 c2.2 0 3.4 1 3.4 2.6 c0 1.6 -1.2 2.6 -3.4 2.6 l4.6 4.3" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Agent<span>Setu</span></h1>
+      <p class="tag">every money action explainable · bounded · gated</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="badge" id="merchant-badge">merchant: …</div>
+    <div class="badge" id="chain-badge"><span class="dot"></span> ledger …</div>
+  </div>
+</header>
+
+<main>
+  <section class="col">
+    <h2><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5 L19 12 L5 19.5 V4.5 Z"/></svg> Run agent <small>no terminal needed</small></h2>
+    <div class="card form">
+      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:10px">Task
+        <textarea id="a-task" rows="2" placeholder="buy me a black hoodie under 1500 rupees">buy me a black hoodie under 1500 rupees</textarea>
+      </label>
+      <div class="row">
+        <label style="flex:2">Mandate
+          <select id="a-mandate"></select>
+        </label>
+        <label id="a-cap-wrap" style="flex:1">Cap ₹
+          <input type="number" id="a-cap" value="1500" min="1">
+        </label>
+      </div>
+      <button id="a-run" class="btn gold" style="width:100%">▶ Run agent</button>
+      <div id="a-steps" class="steps" hidden></div>
+    </div>
+
+    <h2 style="margin-top:26px"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 L20 5.5 V11.5 C20 16.5 16.7 20.2 12 21.5 C7.3 20.2 4 16.5 4 11.5 V5.5 Z"/><path d="M8.8 12 l2.2 2.2 L15.5 9.5"/></svg> Mandates <small>UPI Reserve Pay pattern</small></h2>
+    <form id="mandate-form" class="card form">
+      <div class="row">
+        <label>Cap ₹ <input type="number" id="f-cap" value="1500" min="1"></label>
+        <label>Uses <input type="number" id="f-uses" value="2" min="1"></label>
+        <label>Expiry (min) <input type="number" id="f-exp" value="60" min="1"></label>
+      </div>
+      <button type="submit" class="btn gold">Grant mandate</button>
+    </form>
+    <div id="mandates"></div>
+  </section>
+
+  <section class="col">
+    <h2><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.2"/><path d="M5 20 c0 -3.9 3.1 -6.2 7 -6.2 s7 2.3 7 6.2"/><path d="M18.5 3.5 v3.5 M18.5 9.3 v.01" stroke-width="2"/></svg> Escalations <small>human-in-the-loop</small></h2>
+    <div id="escalations"><p class="empty">No pending escalations. The agent is inside its mandate.</p></div>
+    <h2 style="margin-top:26px"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 L20.5 7 v10 L12 21.2 L3.5 17 V7 Z"/><path d="M3.5 7 L12 11.2 L20.5 7 M12 11.2 V21.2"/></svg> Orders</h2>
+    <div id="orders"></div>
+  </section>
+
+  <section class="col wide">
+    <h2><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 13.5 a4 4 0 0 1 0 -5.6 l3 -3 a4 4 0 0 1 5.6 5.6 l-1.6 1.6"/><path d="M14.5 10.5 a4 4 0 0 1 0 5.6 l-3 3 a4 4 0 0 1 -5.6 -5.6 l1.6 -1.6"/></svg> Audit ledger <small>append-only · signed · anchored</small></h2>
+    <div id="ledger" class="ledger"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

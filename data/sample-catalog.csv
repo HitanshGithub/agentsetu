@@ -1,0 +1,9 @@
+id,name,price_inr,category,tags,stock,description
+p1,Classic Black Hoodie,1299,apparel,hoodie|black|winter|unisex,14,Heavyweight 400gsm cotton hoodie in jet black. Sizes S-XXL.
+p2,Oversized Grey Hoodie,1499,apparel,hoodie|grey|oversized,8,Relaxed-fit fleece hoodie in heather grey. Sizes M-XL.
+p3,Premium Zip Hoodie,2799,apparel,hoodie|zip|premium|black,5,Full-zip premium loopknit hoodie with brass hardware.
+p4,Graphic Tee - Mumbai Nights,699,apparel,tshirt|graphic|black,22,100% cotton tee with Mumbai skyline print.
+p5,Everyday White Tee,499,apparel,tshirt|white|basic,31,Soft combed-cotton crew neck tee.
+p6,Corduroy Cap,899,accessories,cap|corduroy|brown,12,Six-panel corduroy cap with adjustable strap.
+p7,Canvas Tote,599,accessories,tote|canvas|natural,18,Heavy canvas tote with inner pocket.
+p8,Wool Beanie,799,accessories,beanie|wool|navy,9,Ribbed merino-blend beanie in navy.
