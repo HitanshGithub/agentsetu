@@ -36,19 +36,9 @@ Every single payment passes these, in this sequence, in a process the model cann
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    U[User intent] --> A["Buyer Agent (LLM tool-calling loop)"]
-    A -->|"discovers tools via /manifest or MCP /mcp"| S["Generated Merchant Storefront\nsearch · get_product · create_order · pay"]
-    S -->|every pay| M["Mandate Engine (separate process)\nALLOW / ESCALATE / DENY + funds hold"]
-    M --> H["Approve / Deny UI (human gate)"]
-    S --> R["Razorpay test-mode Orders API\n(orders real & verified; capture simulated)"]
-    S --> L["Signed, anchored Audit Ledger"]
-    M --> L
-    A --> L
-    L --> P["Control Panel (live)"]
-    H --- P
-```
+![AgentSetu architecture: the buyer agent browses and creates orders freely, but every pay call crosses into a separate mandate engine that checks the mandate, the attempt budget, every line item's category and the remaining cap before any money moves. Every decision lands on a signed, anchored ledger.](docs/architecture.png)
+
+The agent can search, compare and create orders all day. Only one call moves money, and that call leaves the model's world entirely: it goes to a separate process that answers ALLOW, ESCALATE or DENY, and reserves the funds before the payment is attempted.
 
 ## Purchase workflow
 
